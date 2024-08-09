@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		211FACB72C65365900905EBD /* RSUserNotificationCenterManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211FACAE2C65365900905EBD /* RSUserNotificationCenterManager.framework */; };
-		211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */; };
 		211FACC92C6536A900905EBD /* RSNotificationCenterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */; };
-		2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */; };
-		7519C7B92C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */; };
+		7519C8682C668187009A4BBB /* RSNotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7519C8642C668187009A4BBB /* RSNotificationCenterManager.swift */; };
+		7519C8692C668187009A4BBB /* RSNotificationCenterSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7519C8652C668187009A4BBB /* RSNotificationCenterSubscriber.swift */; };
+		7519C86B2C668187009A4BBB /* RSNotificationPresentationOption+UserNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7519C8672C668187009A4BBB /* RSNotificationPresentationOption+UserNotificationExtension.swift */; };
+		7519C86F2C6682A5009A4BBB /* RSNotificationPresentationOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 7519C86E2C6682A5009A4BBB /* RSNotificationPresentationOption.h */; };
+		7519C8AC2C668782009A4BBB /* aa-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7519C8AB2C668782009A4BBB /* aa-Bridging-Header.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +29,12 @@
 /* Begin PBXFileReference section */
 		211FACAE2C65365900905EBD /* RSUserNotificationCenterManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSUserNotificationCenterManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		211FACB62C65365900905EBD /* RSUserNotificationCenterManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSUserNotificationCenterManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManager.swift; sourceTree = "<group>"; };
 		211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManagerTests.swift; sourceTree = "<group>"; };
-		2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterSubscriber.swift; sourceTree = "<group>"; };
-		7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationPresentationOptionSet.swift; sourceTree = "<group>"; };
+		7519C8642C668187009A4BBB /* RSNotificationCenterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManager.swift; sourceTree = "<group>"; };
+		7519C8652C668187009A4BBB /* RSNotificationCenterSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterSubscriber.swift; sourceTree = "<group>"; };
+		7519C8672C668187009A4BBB /* RSNotificationPresentationOption+UserNotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RSNotificationPresentationOption+UserNotificationExtension.swift"; sourceTree = "<group>"; };
+		7519C86E2C6682A5009A4BBB /* RSNotificationPresentationOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNotificationPresentationOption.h; sourceTree = "<group>"; };
+		7519C8AB2C668782009A4BBB /* aa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "aa-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +77,11 @@
 		211FACB02C65365900905EBD /* RSUserNotificationCenterManager */ = {
 			isa = PBXGroup;
 			children = (
-				211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */,
-				2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */,
-				7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */,
+				7519C8AB2C668782009A4BBB /* aa-Bridging-Header.h */,
+				7519C8642C668187009A4BBB /* RSNotificationCenterManager.swift */,
+				7519C8652C668187009A4BBB /* RSNotificationCenterSubscriber.swift */,
+				7519C86E2C6682A5009A4BBB /* RSNotificationPresentationOption.h */,
+				7519C8672C668187009A4BBB /* RSNotificationPresentationOption+UserNotificationExtension.swift */,
 			);
 			path = RSUserNotificationCenterManager;
 			sourceTree = "<group>";
@@ -95,6 +101,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7519C86F2C6682A5009A4BBB /* RSNotificationPresentationOption.h in Headers */,
+				7519C8AC2C668782009A4BBB /* aa-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +158,7 @@
 				TargetAttributes = {
 					211FACAD2C65365900905EBD = {
 						CreatedOnToolsVersion = 15.2;
-						LastSwiftMigration = 1520;
+						LastSwiftMigration = 1510;
 					};
 					211FACB52C65365900905EBD = {
 						CreatedOnToolsVersion = 15.2;
@@ -202,9 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */,
-				211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */,
-				7519C7B92C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift in Sources */,
+				7519C86B2C668187009A4BBB /* RSNotificationPresentationOption+UserNotificationExtension.swift in Sources */,
+				7519C8692C668187009A4BBB /* RSNotificationCenterSubscriber.swift in Sources */,
+				7519C8682C668187009A4BBB /* RSNotificationCenterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +396,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/aa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,6 +435,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/aa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

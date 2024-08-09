@@ -1,10 +1,10 @@
 import UserNotifications
 
-class RSNotificationCenterManager: NSObject {
+@objc public class RSNotificationCenterManager: NSObject {
     // MARK: - Properties
 
     // It uses `UNUserNotificationCenter`'s `current` singleton.
-    public static let `default`: RSNotificationCenterManager = .init(notificationCenter: .current())
+    @objc public static let `default`: RSNotificationCenterManager = .init(notificationCenter: .current())
 
     private let notificationCenter: UNUserNotificationCenter
     private var subscriberArray: [any RSNotificationCenterSubscriber]
@@ -15,11 +15,13 @@ class RSNotificationCenterManager: NSObject {
         self.notificationCenter = notificationCenter
         self.subscriberArray = []
         super.init()
+
+        self.notificationCenter.delegate = self
     }
 
     // MARK: - Methods
 
-    public func add(subscriber: any RSNotificationCenterSubscriber) {
+    @objc public func add(subscriber: any RSNotificationCenterSubscriber) {
         self.subscriberArray.append(subscriber)
     }
 
@@ -31,40 +33,40 @@ class RSNotificationCenterManager: NSObject {
 }
 
 // MARK: - UNUserNotificationCenter Adapter Methods
-extension RSNotificationCenterManager {
-    func getNotificationSettings() async -> UNNotificationSettings {
+public extension RSNotificationCenterManager {
+    @objc func getNotificationSettings() async -> UNNotificationSettings {
         await self.notificationCenter.notificationSettings()
     }
 
-    func requestAuthorization(withOptions options: UNAuthorizationOptions) async throws -> Bool {
+    @objc func requestAuthorization(withOptions options: UNAuthorizationOptions) async throws -> Bool {
         try await self.notificationCenter.requestAuthorization(options: options)
     }
 
-    func getDeliveredNotificationArray() async -> [UNNotification] {
+    @objc func getDeliveredNotificationArray() async -> [UNNotification] {
         await self.notificationCenter.deliveredNotifications()
     }
 
-    func clearDeliveredNotificationArray() {
+    @objc func clearDeliveredNotificationArray() {
         self.notificationCenter.removeAllDeliveredNotifications()
     }
 
-    func clearDeliveredNotificationArray(for identifiers: [String]) {
+    @objc func clearDeliveredNotificationArray(for identifiers: [String]) {
         self.notificationCenter.removeDeliveredNotifications(withIdentifiers: identifiers)
     }
 
-    func getPendingNotificationArray() async -> [UNNotificationRequest] {
+    @objc func getPendingNotificationArray() async -> [UNNotificationRequest] {
         await self.notificationCenter.pendingNotificationRequests()
     }
 
-    func clearPendingNotificationArray() {
+    @objc func clearPendingNotificationArray() {
         self.notificationCenter.removeAllPendingNotificationRequests()
     }
 
-    func clearPendingNotificationArray(for identifiers: [String]) {
+    @objc func clearPendingNotificationArray(for identifiers: [String]) {
         self.notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
     }
 
-    func addRequest(
+    @objc func addRequest(
         fromSubscriberId subscriberId: String,
         withIdentifier identifier: String,
         notificationContent: UNMutableNotificationContent,
@@ -76,11 +78,11 @@ extension RSNotificationCenterManager {
         )
     }
 
-    func getNotificationCategorySet() async -> Set<UNNotificationCategory> {
+    @objc func getNotificationCategorySet() async -> Set<UNNotificationCategory> {
         await self.notificationCenter.notificationCategories()
     }
 
-    func set(notificationCategorySet categorySet: Set<UNNotificationCategory>) {
+    @objc func set(notificationCategorySet categorySet: Set<UNNotificationCategory>) {
         self.notificationCenter.setNotificationCategories(categorySet)
     }
 }
@@ -95,26 +97,24 @@ extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
         }
     }
 
-    func userNotificationCenter(
+    public func userNotificationCenter(
         _ center: UNUserNotificationCenter, willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
         var result: UNNotificationPresentationOptions = []
 
         self.fetchSubscribe(thatHandles: notification) { subscriber in
             let presentationOptionsSet = subscriber.getPresentationOptionSet(for: notification)
-            do {
-                result = try presentationOptionsSet.toUNNotificationPresentationOptions()
-            } catch {
-                print("Error while converting 'presentationOptionsSet': \(error)")
-            }
+            result = presentationOptionsSet.toUNNotificationPresentationOptions()
         }
 
         return result
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+    public func userNotificationCenter(
+        _ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse
+    ) async {
         self.fetchSubscribe(thatHandles: response.notification) {
-            $0.handle(received: response.notification)
+            $0.handle(received: response)
         }
     }
 }

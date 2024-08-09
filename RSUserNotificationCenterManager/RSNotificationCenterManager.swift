@@ -29,3 +29,21 @@ class RSNotificationCenterManager: NSObject {
         }
     }
 }
+
+// MARK: - UNUserNotificationCenterDelegate Implementation
+extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter, willPresent notification: UNNotification
+    ) async -> UNNotificationPresentationOptions {
+        var result: UNNotificationPresentationOptions = []
+
+        self.subscriberArray.forEach { subscriber in
+            if subscriber.canHandle(notification: notification) {
+                result = (try? subscriber.getPresentationOptionSet(forNotification: notification).toUNNotificationPresentationOptions()) ?? []
+                return
+            }
+        }
+
+        return result
+    }
+}

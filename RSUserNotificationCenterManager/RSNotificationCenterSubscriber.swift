@@ -5,6 +5,7 @@ protocol RSNotificationCenterSubscriber: Equatable {
     var identifier: String { get }
 
     func canHandle(notification: UNNotification) -> Bool
+    func getPresentationOptionSet(forNotification: UNNotification) -> RSNotificationPresentationOptionSet
 }
 
 func == (lhs: some RSNotificationCenterSubscriber, rhs: some RSNotificationCenterSubscriber) -> Bool {

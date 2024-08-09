@@ -11,6 +11,7 @@
 		211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */; };
 		211FACC92C6536A900905EBD /* RSNotificationCenterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */; };
 		2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */; };
+		7519C7B92C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManager.swift; sourceTree = "<group>"; };
 		211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManagerTests.swift; sourceTree = "<group>"; };
 		2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterSubscriber.swift; sourceTree = "<group>"; };
+		7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationPresentationOptionSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */,
 				2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */,
+				7519C7B82C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift */,
 			);
 			path = RSUserNotificationCenterManager;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */,
 				211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */,
+				7519C7B92C66263E009A4BBB /* RSNotificationPresentationOptionSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

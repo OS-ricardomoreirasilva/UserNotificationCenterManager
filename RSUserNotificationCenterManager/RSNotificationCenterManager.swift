@@ -32,9 +32,11 @@ class RSNotificationCenterManager: NSObject {
 
 // MARK: - UNUserNotificationCenterDelegate Implementation
 extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
-    private func fetchSubscribe(thatHandles notification: UNNotification, _ completionHandler: (any RSNotificationCenterSubscriber) -> Void) {
+    private func fetchSubscribe(
+        thatHandles notification: UNNotification, _ completionHandler: (any RSNotificationCenterSubscriber) -> Void
+    ) {
         self.subscriberArray.forEach {
-            guard !$0.canHandle(notification: notification) else { return completionHandler($0) }
+            guard !$0.canHandle(notification) else { return completionHandler($0) }
         }
     }
 
@@ -43,8 +45,13 @@ extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
     ) async -> UNNotificationPresentationOptions {
         var result: UNNotificationPresentationOptions = []
 
-        self.fetchSubscribe(thatHandles: notification) {
-            result = (try? $0.getPresentationOptionSet(forNotification: notification).toUNNotificationPresentationOptions()) ?? []
+        self.fetchSubscribe(thatHandles: notification) { subscriber in
+            let presentationOptionsSet = subscriber.getPresentationOptionSet(for: notification)
+            do {
+                result = try presentationOptionsSet.toUNNotificationPresentationOptions()
+            } catch {
+                print("Error while converting 'presentationOptionsSet': \(error)")
+            }
         }
 
         return result
@@ -52,7 +59,7 @@ extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
         self.fetchSubscribe(thatHandles: response.notification) {
-            $0.handle(receivedNotification: response.notification)
+            $0.handle(received: response.notification)
         }
     }
 }

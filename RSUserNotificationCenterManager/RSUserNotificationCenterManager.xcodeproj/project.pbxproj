@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		211FACB72C65365900905EBD /* RSUserNotificationCenterManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211FACAE2C65365900905EBD /* RSUserNotificationCenterManager.framework */; };
-		211FACC72C65369200905EBD /* RSUserNotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC62C65369200905EBD /* RSUserNotificationCenterManager.swift */; };
-		211FACC92C6536A900905EBD /* RSUserNotificationCenterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC82C6536A900905EBD /* RSUserNotificationCenterManagerTests.swift */; };
+		211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */; };
+		211FACC92C6536A900905EBD /* RSNotificationCenterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */; };
+		2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,8 +26,9 @@
 /* Begin PBXFileReference section */
 		211FACAE2C65365900905EBD /* RSUserNotificationCenterManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSUserNotificationCenterManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		211FACB62C65365900905EBD /* RSUserNotificationCenterManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSUserNotificationCenterManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		211FACC62C65369200905EBD /* RSUserNotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSUserNotificationCenterManager.swift; sourceTree = "<group>"; };
-		211FACC82C6536A900905EBD /* RSUserNotificationCenterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSUserNotificationCenterManagerTests.swift; sourceTree = "<group>"; };
+		211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManager.swift; sourceTree = "<group>"; };
+		211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterManagerTests.swift; sourceTree = "<group>"; };
+		2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSNotificationCenterSubscriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +71,8 @@
 		211FACB02C65365900905EBD /* RSUserNotificationCenterManager */ = {
 			isa = PBXGroup;
 			children = (
-				211FACC62C65369200905EBD /* RSUserNotificationCenterManager.swift */,
+				211FACC62C65369200905EBD /* RSNotificationCenterManager.swift */,
+				2146F02A2C653B5B00917044 /* RSNotificationCenterSubscriber.swift */,
 			);
 			path = RSUserNotificationCenterManager;
 			sourceTree = "<group>";
@@ -77,7 +80,7 @@
 		211FACBA2C65365900905EBD /* RSUserNotificationCenterManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				211FACC82C6536A900905EBD /* RSUserNotificationCenterManagerTests.swift */,
+				211FACC82C6536A900905EBD /* RSNotificationCenterManagerTests.swift */,
 			);
 			path = RSUserNotificationCenterManagerTests;
 			sourceTree = "<group>";
@@ -196,7 +199,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				211FACC72C65369200905EBD /* RSUserNotificationCenterManager.swift in Sources */,
+				2146F02B2C653B5B00917044 /* RSNotificationCenterSubscriber.swift in Sources */,
+				211FACC72C65369200905EBD /* RSNotificationCenterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				211FACC92C6536A900905EBD /* RSUserNotificationCenterManagerTests.swift in Sources */,
+				211FACC92C6536A900905EBD /* RSNotificationCenterManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

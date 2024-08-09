@@ -30,6 +30,61 @@ class RSNotificationCenterManager: NSObject {
     }
 }
 
+// MARK: - UNUserNotificationCenter Adapter Methods
+extension RSNotificationCenterManager {
+    func getNotificationSettings() async -> UNNotificationSettings {
+        await self.notificationCenter.notificationSettings()
+    }
+
+    func requestAuthorization(withOptions options: UNAuthorizationOptions) async throws -> Bool {
+        try await self.notificationCenter.requestAuthorization(options: options)
+    }
+
+    func getDeliveredNotificationArray() async -> [UNNotification] {
+        await self.notificationCenter.deliveredNotifications()
+    }
+
+    func clearDeliveredNotificationArray() {
+        self.notificationCenter.removeAllDeliveredNotifications()
+    }
+
+    func clearDeliveredNotificationArray(for identifiers: [String]) {
+        self.notificationCenter.removeDeliveredNotifications(withIdentifiers: identifiers)
+    }
+
+    func getPendingNotificationArray() async -> [UNNotificationRequest] {
+        await self.notificationCenter.pendingNotificationRequests()
+    }
+
+    func clearPendingNotificationArray() {
+        self.notificationCenter.removeAllPendingNotificationRequests()
+    }
+
+    func clearPendingNotificationArray(for identifiers: [String]) {
+        self.notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+
+    func addRequest(
+        fromSubscriberId subscriberId: String,
+        withIdentifier identifier: String,
+        notificationContent: UNMutableNotificationContent,
+        trigger: UNNotificationTrigger? = nil
+    ) async throws {
+        notificationContent.userInfo["subscriberId"] = subscriberId
+        try await self.notificationCenter.add(
+            .init(identifier: identifier, content: notificationContent, trigger: trigger)
+        )
+    }
+
+    func getNotificationCategorySet() async -> Set<UNNotificationCategory> {
+        await self.notificationCenter.notificationCategories()
+    }
+
+    func set(notificationCategorySet categorySet: Set<UNNotificationCategory>) {
+        self.notificationCenter.setNotificationCategories(categorySet)
+    }
+}
+
 // MARK: - UNUserNotificationCenterDelegate Implementation
 extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
     private func fetchSubscribe(

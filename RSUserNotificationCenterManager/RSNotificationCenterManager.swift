@@ -32,18 +32,27 @@ class RSNotificationCenterManager: NSObject {
 
 // MARK: - UNUserNotificationCenterDelegate Implementation
 extension RSNotificationCenterManager: UNUserNotificationCenterDelegate {
+    private func fetchSubscribe(thatHandles notification: UNNotification, _ completionHandler: (any RSNotificationCenterSubscriber) -> Void) {
+        self.subscriberArray.forEach {
+            guard !$0.canHandle(notification: notification) else { return completionHandler($0) }
+        }
+    }
+
     func userNotificationCenter(
         _ center: UNUserNotificationCenter, willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
         var result: UNNotificationPresentationOptions = []
 
-        self.subscriberArray.forEach { subscriber in
-            if subscriber.canHandle(notification: notification) {
-                result = (try? subscriber.getPresentationOptionSet(forNotification: notification).toUNNotificationPresentationOptions()) ?? []
-                return
-            }
+        self.fetchSubscribe(thatHandles: notification) {
+            result = (try? $0.getPresentationOptionSet(forNotification: notification).toUNNotificationPresentationOptions()) ?? []
         }
 
         return result
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        self.fetchSubscribe(thatHandles: response.notification) {
+            $0.handle(receivedNotification: response.notification)
+        }
     }
 }
